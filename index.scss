@@ -1,0 +1,62 @@
+//Aqui solo pisamos un estilo con ayuda se SASS
+$secondary-color: #125688;
+
+// Lo que queremos es importar el materialize scss que contiene los estilos
+// que necesitamos pero a traves de scss, este archivo contiene los estilos
+// escritos en sass
+@import "node_modules/materialize-css/sass/materialize.scss";
+
+// Pegamos el codigo de nuestro css
+body {
+  background: #fafafa;
+  color: #125688;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#main-container {
+  margin: 30px auto;
+}
+
+.iphone {
+  max-width: 100%;
+}
+
+.site-footer {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.login-box, .signup-box {
+  background-color: white;
+  border: 1px solid #edeeee;
+  border-radius: 3px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.signup-box .platzigram {
+  font-family: 'Oleo Script';
+  font-size: 42px;
+}
+
+.signup-form {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.signup-form h2 {
+  color: #a5a7aa;
+  font-size: 1.2em;
+}
+
+.signup-form .btn.btn-fb {
+  background-color: #4090db;
+  font-size: 0.8em;
+}
+
+.signup-form .btn.btn-fb:hover {
+  background-color: #2d6599;
+}
+.signup-form .btn.btn-signup {
+  background-color: #125688;
+}
