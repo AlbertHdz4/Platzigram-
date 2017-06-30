@@ -2576,10 +2576,15 @@ module.exports = [
 },{}],16:[function(require,module,exports){
 'use strict';
 
+var _templateObject = _taggedTemplateLiteral(['<div class="container">\n        <div class="row">\n          <div class="col s10 push-s1">\n            <div class="row">\n              <!-- m5 se refiere a la anchura de columnas que tendra -->\n              <div class="col m5 hide-on-small-only">\n                <!-- imagen -->\n                <img src="iphone.png" class="iphone" alt="">\n              </div>\n              <div class="col s12 m7">\n                <div class="row">\n                  <div class="signup-box">\n                    <h1 class="platzigram">Platzigram</h1>\n                    <form class="signup-form">\n                      <h2>Registrate para ver fotos de tus amigos estudiando en Platzi</h2>\n                      <div class="section">\n                        <!-- Clases que ocultan los botones ya sea en escritorio o en moviles -->\n                        <a href="" class="btn btn-fb hide-on-small-only">Iniciar Sesi\xF3n con Facebook</a>\n                        <a href="" class="btn btn-fb hide-on-med-and-up">Iniciar Sesi\xF3n</a>\n                      </div>\n                      <div class="divider"></div>\n                      <div class="secti">\n                        <input type="email" name="email" value="" placeholder="Correo Electr\xF3nico">\n                        <input type="text" name="name" value="" placeholder="Nombre Completo">\n                        <input type="text" name="username" value="" placeholder="Nombre de Usuario">\n                        <input type="password" name="password" value="" placeholder="Contrase\xF1a">\n                        <button type="submit" class="btn waves-effect waves-light btn-signup">Reg\xEDstrate</button>\n                      </div>\n                    </form>\n                  </div>\n                </div>\n                <div class="row">\n                  <div class="login-box">\n                    \xBFTienes una cuenta? <a href="/signin">Entrar</a>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>'], ['<div class="container">\n        <div class="row">\n          <div class="col s10 push-s1">\n            <div class="row">\n              <!-- m5 se refiere a la anchura de columnas que tendra -->\n              <div class="col m5 hide-on-small-only">\n                <!-- imagen -->\n                <img src="iphone.png" class="iphone" alt="">\n              </div>\n              <div class="col s12 m7">\n                <div class="row">\n                  <div class="signup-box">\n                    <h1 class="platzigram">Platzigram</h1>\n                    <form class="signup-form">\n                      <h2>Registrate para ver fotos de tus amigos estudiando en Platzi</h2>\n                      <div class="section">\n                        <!-- Clases que ocultan los botones ya sea en escritorio o en moviles -->\n                        <a href="" class="btn btn-fb hide-on-small-only">Iniciar Sesi\xF3n con Facebook</a>\n                        <a href="" class="btn btn-fb hide-on-med-and-up">Iniciar Sesi\xF3n</a>\n                      </div>\n                      <div class="divider"></div>\n                      <div class="secti">\n                        <input type="email" name="email" value="" placeholder="Correo Electr\xF3nico">\n                        <input type="text" name="name" value="" placeholder="Nombre Completo">\n                        <input type="text" name="username" value="" placeholder="Nombre de Usuario">\n                        <input type="password" name="password" value="" placeholder="Contrase\xF1a">\n                        <button type="submit" class="btn waves-effect waves-light btn-signup">Reg\xEDstrate</button>\n                      </div>\n                    </form>\n                  </div>\n                </div>\n                <div class="row">\n                  <div class="login-box">\n                    \xBFTienes una cuenta? <a href="/signin">Entrar</a>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>']);
+
+function _taggedTemplateLiteral(strings, raw) {
+  return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
+}
+
 // Esta peticion de JavaScript se hace a través de Browserify pues
 // este es el encargado de juntar todas las dependencias de desarrollo
 // y otorgarlas a la interfaz que las necesite
-
 var page = require('page');
 var yoyo = require('yo-yo');
 var empty = require('empty-element');
@@ -2587,9 +2592,14 @@ var empty = require('empty-element');
 var main = document.getElementById('main-container');
 
 page('/', function (ctx, next) {
-  main.innerHTML = '<a href="/signup">Signup</a>'; //diga home
+  main.innerHTML = "<a href='/signup'>Signup</a>";
 });
 
-page.start();
+page('/signup', function (ctx, next) {
+  var element = yoyo(_templateObject);
+  main.appendChild(element);
+});
+
+page();
 
 },{"empty-element":3,"page":11,"yo-yo":14}]},{},[16]);
