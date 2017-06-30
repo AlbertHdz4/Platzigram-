@@ -2580,6 +2580,7 @@ var page = require('page');
 
 page('/', function (ctx, next) {
   var main = document.getElementById('main-container');
+  document.getElementsByTagName('title')[0].innerHTML = 'Platzigram';
   main.innerHTML = "<a href='./signup'>Signup</a>";
 });
 
@@ -2622,6 +2623,7 @@ var template = require("./template");
 
 page('/signin', function (ctx, next) {
   var main = document.getElementById('main-container');
+  document.getElementsByTagName('title')[0].innerHTML = 'Platzigram - Signin';
   empty(main).appendChild(template);
 });
 
@@ -2650,6 +2652,7 @@ var template = require("./template");
 
 page('/signup', function (ctx, next) {
   var main = document.getElementById('main-container');
+  document.getElementsByTagName('title')[0].innerHTML = 'Platzigram - Signup';
   empty(main).appendChild(template);
 });
 

@@ -21,13 +21,21 @@ app.use(express.static('public'));
 // llamado get y recibe como parametro la ruta o URL y como
 // segundo parametro una funcion que se va a ejecutar cuando
 // el ruteo coincida, cuando acceda a la ruta / ejecuta la funcion
-app.get(['/', '/signup', '/signin'], function(req, res) {
+app.get('/', function(req, res) {
   // res.send('Hola Mundo!');
   // Esta linea de codigo lo que hace es renderizar o "pintar" el
   // documento que nosotros le indiquemos entre las comillas, este
   // documento será buscado en la carpeta llamada view en donde este
   // este mismo archivo
-  res.render('index');
+  res.render('index', {title: 'Platzigram'});
+});
+
+app.get('/signup', function(req, res) {
+  res.render('index', {title: 'Platzigram - Signup'});
+});
+
+app.get('/signin', function(req, res) {
+  res.render('index', {title: 'Platzigram - Signin'});
 });
 
 // Por ultimo tenemos que correr el puerto en el que queremos que
