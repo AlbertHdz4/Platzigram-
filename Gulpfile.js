@@ -51,6 +51,10 @@ const compile = (watch) => {
     bundle
       .transform(babelify, {presets: ['es2015']})
       .bundle()
+      .on('error', function(error) {
+        console.log('Se ha originado un error', error);
+        this.emit('end');
+      })
       //source es otra libreria que nos ayuda a transformar lo que
       // nos devuelve el bundle() a algo que pueda entender Gulp y
       // poder seguir procesandolo y generar los documentos en carpeta
