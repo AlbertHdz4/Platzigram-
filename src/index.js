@@ -2,15 +2,7 @@
 // este es el encargado de juntar todas las dependencias de desarrollo
 // y otorgarlas a la interfaz que las necesite
 var page = require('page');
+require('./homepage');
+require('./signup');
 
-var main = document.getElementById('main-container');
-
-page('/', function(ctx, next) {
-  main.innerHTML = 'Home <a href="/signup">Signup</a>'; //diga home
-})
-
-page('/signup', function(ctx, next) {
-  main.innerHTML = '<a href="/">Home</a> Otro enlace'; //diga home
-})
-
-page.start()
+page();
