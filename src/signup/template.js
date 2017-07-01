@@ -10,7 +10,7 @@ var signupForm = yoyo`<div class="col s12 m7">
                     <div class="section">
                       <!-- Clases que ocultan los botones ya sea en escritorio o en moviles -->
                       <a href="" class="btn btn-fb hide-on-small-only">Iniciar Sesión con Facebook</a>
-                      <a href="" class="btn btn-fb hide-on-med-and-up">Iniciar Sesión</a>
+                      <a href="" class="btn btn-fb hide-on-med-and-up"><i class="fa fa-facebook-official"></i> Iniciar Sesión</a>
                     </div>
                     <div class="divider"></div>
                     <div class="secti">

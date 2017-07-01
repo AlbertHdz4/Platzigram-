@@ -4,7 +4,7 @@ var template = require("./template");
 
 page('/signup', function(ctx, next) {
   var main = document.getElementById('main-container');
-  document.getElementsByTagName('title')
-  [0].innerHTML='Platzigram - Signup';
+  var title = document.getElementsByTagName('title');
+  title[0].innerHTML='Platzigram - Signup';
   empty(main).appendChild(template);
 });
