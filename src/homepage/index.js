@@ -6,5 +6,26 @@ page('/', function(ctx, next) {
   var main = document.getElementById('main-container');
   var title = document.getElementsByTagName('title');
   title[0].innerHTML='Platzigram - Homepage';
-  empty(main).appendChild(template);
+  var pictures = [
+    {
+      user: {
+        username: 'ahernandez',
+        avatar: 'https://scontent.fmex3-1.fna.fbcdn.net/v/t1.0-9/17155671_1288914331173722_1801883158916523163_n.jpg?oh=1b6d9594b1dc93ac65e33603f1b48587&oe=59DB0BE3'
+      },
+      url: 'office.jpg',
+      likes: 14,
+      liked: true
+    },
+    {
+      user: {
+        username: 'ahernandez',
+        avatar: 'https://scontent.fmex3-1.fna.fbcdn.net/v/t1.0-9/17155671_1288914331173722_1801883158916523163_n.jpg?oh=1b6d9594b1dc93ac65e33603f1b48587&oe=59DB0BE3'
+      },
+      url: 'office.jpg',
+      likes: 2,
+      liked: false
+    }
+  ];
+
+  empty(main).appendChild(template(pictures));
 });

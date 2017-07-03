@@ -1,5 +1,6 @@
 //Aqui solo pisamos un estilo con ayuda se SASS
 $secondary-color: #125688;
+$avatar-size: 48px;
 
 // Lo que queremos es importar el materialize scss que contiene los estilos
 // que necesitamos pero a traves de scss, este archivo contiene los estilos
@@ -14,6 +15,10 @@ body {
 }
 
 #main-container {
+  margin: 0 auto;
+}
+
+.landing {
   margin: 30px auto;
 }
 
@@ -37,7 +42,7 @@ body {
 .platzigram {
   font-family: 'Oleo Script' !important;
   font-size: 42px;
-  color: $secondary-color !important; 
+  color: $secondary-color !important;
 }
 
 .signup-form {
@@ -67,4 +72,60 @@ body {
   color: $secondary-color;
   box-shadow: none;
   border-bottom: 1px solid #edeeee;
+}
+
+.timeline {
+  padding: 30px 0;
+}
+
+.avatar {
+  width: $avatar-size;
+  height: $avatar-size;
+  border-radius: 50%;
+  float: left;
+  margin-right: 12px;
+}
+
+.card .username {
+  color: $secondary-color;
+  line-height: 48px;
+}
+
+.card small.time {
+  line-height: $avatar-size;
+}
+
+.card p {
+  padding: 20px 0;
+}
+
+.card .likes {
+  line-height: 30px;
+  margin-left: 12px;
+}
+
+.card i {
+  font-size: 30px;
+}
+
+.card .fa-heart-o {
+  color: $secondary-color;
+  transition: 0.5s;
+}
+
+.card .fa-heart {
+  color: #f44336;
+  display: none;
+  transition: 0.5s;
+}
+
+// Caracteristicas de Sass
+.card.liked {
+  .fa-heart {
+    display: block;
+  }
+
+  .fa-heart-o {
+    display: none;
+  }
 }
