@@ -17,11 +17,16 @@ app.set('view engine', 'pug');
 // cualquier usuario pueda acceder a el
 app.use(express.static('public'));
 
+// function restrict(req, res, next) {
+//   if(req.user) return next();
+//   res.redirect('/signup');
+// }
+
 // con ayuda de la instancia app accedemos al metodo de express
 // llamado get y recibe como parametro la ruta o URL y como
 // segundo parametro una funcion que se va a ejecutar cuando
 // el ruteo coincida, cuando acceda a la ruta / ejecuta la funcion
-app.get('/', function(req, res) {
+app.get('/', /*restrict,*/ function(req, res) {
   // res.send('Hola Mundo!');
   // Esta linea de codigo lo que hace es renderizar o "pintar" el
   // documento que nosotros le indiquemos entre las comillas, este
@@ -37,6 +42,32 @@ app.get('/signup', function(req, res) {
 app.get('/signin', function(req, res) {
   res.render('index', {title: 'Platzigram - Signin'});
 });
+
+app.get('/api/pictures', function(req, res) {
+  var pictures = [
+    {
+      user: {
+        username: 'ahernandez',
+        avatar: 'https://scontent.fmex3-1.fna.fbcdn.net/v/t1.0-9/17155671_1288914331173722_1801883158916523163_n.jpg?oh=1b6d9594b1dc93ac65e33603f1b48587&oe=59DB0BE3'
+      },
+      url: 'office.jpg',
+      likes: 0,
+      liked: false,
+      createdAt: new Date().getTime()
+    },
+    {
+      user: {
+        username: 'ahernandez',
+        avatar: 'https://scontent.fmex3-1.fna.fbcdn.net/v/t1.0-9/17155671_1288914331173722_1801883158916523163_n.jpg?oh=1b6d9594b1dc93ac65e33603f1b48587&oe=59DB0BE3'
+      },
+      url: 'office.jpg',
+      likes: 1,
+      liked: false,
+      createdAt: new Date().setDate(new Date().getDate() - 10)
+    }
+  ];
+  setTimeout(() => res.send(pictures), 2000);
+})
 
 // Por ultimo tenemos que correr el puerto en el que queremos que
 // escuche, en este caso el 3000

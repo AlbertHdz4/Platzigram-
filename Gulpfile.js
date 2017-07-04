@@ -38,9 +38,22 @@ const compile = (watch) => {
   //En esta linea lo que se hace es crear una variable que
   // recibe lo que nos devuelve watchify que a su vez recibe como
   // parametro lo que regresa browserify (bundler)
-  var bundle = watchify(browserify('./src/index.js'));
+  var bundle = browserify('./src/index.js', {debug: true});
   //Se crea una funcion que haga todo el build de los JavaScript
   function rebundle() {
+    if(watch) {  
+      //lo que regresa watchify es un objeto que nos va a permitir
+      // escuchar cada vez que pase un cambio en los archivos
+      bundle = watchify(bundle);
+      // Bundle tiene una funcion llamada on y on recibe un
+      // String que es el nombre de un evento, ademas on,
+      // recibe como parametro una funcion que se ejecutará cuando
+      // cambie nuestros archivos de nuestro bundle
+      bundle.on('update', function() {
+        console.log('---> Bundling...');
+        rebundle();
+      });
+    }
     //Aqui definimos una nueva tarea ayudandonos de browserify, el cual
     // nos va a generar un bundle y este a su vez será procesado por
     // Babel a estandar ES2015 y despues será procesado por Gulp
@@ -49,7 +62,7 @@ const compile = (watch) => {
     //Hemos borrado la tarea anterior y la sustituimos con
     // esta funcion y utilizando una nueva variable llamada bundle
     bundle
-      .transform(babelify, {presets: ['es2015']})
+      .transform(babelify, {presets: ['es2015'], plugins: [ 'syntax-async-functions', 'transform-regenerator']})
       .bundle()
       .on('error', function(error) {
         console.log('Se ha originado un error', error);
@@ -62,18 +75,6 @@ const compile = (watch) => {
       .pipe(source('index.js'))
       .pipe(rename('app.js'))
       .pipe(gulp.dest('public'))
-  }
-  //lo que regresa watchify es un objeto que nos va a permitir
-  // escuchar cada vez que pase un cambio en los archivos
-  if(watch) {
-    // Bundle tiene una funcion llamada on y on recibe un
-    // String que es el nombre de un evento, ademas on,
-    // recibe como parametro una funcion que se ejecutará cuando
-    // cambie nuestros archivos de nuestro bundle
-    bundle.on('update', function() {
-      console.log('---> Bundling...');
-      rebundle();
-    });
   }
   rebundle();
 }

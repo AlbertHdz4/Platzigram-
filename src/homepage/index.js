@@ -1,33 +1,67 @@
 var page = require('page');
 var empty = require('empty-element');
 var template = require("./template");
+var request = require('superagent');
+var axios = require('axios');
+var headerMidware = require('../header');
 
-page('/', function(ctx, next) {
+page('/', headerMidware, asyncLoad, function(ctx, next) {
   var main = document.getElementById('main-container');
   var title = document.getElementsByTagName('title');
   title[0].innerHTML='Platzigram - Homepage';
-  var pictures = [
-    {
-      user: {
-        username: 'ahernandez',
-        avatar: 'https://scontent.fmex3-1.fna.fbcdn.net/v/t1.0-9/17155671_1288914331173722_1801883158916523163_n.jpg?oh=1b6d9594b1dc93ac65e33603f1b48587&oe=59DB0BE3'
-      },
-      url: 'office.jpg',
-      likes: 0,
-      liked: false,
-      createdAt: new Date().getTime()
-    },
-    {
-      user: {
-        username: 'ahernandez',
-        avatar: 'https://scontent.fmex3-1.fna.fbcdn.net/v/t1.0-9/17155671_1288914331173722_1801883158916523163_n.jpg?oh=1b6d9594b1dc93ac65e33603f1b48587&oe=59DB0BE3'
-      },
-      url: 'office.jpg',
-      likes: 1,
-      liked: false,
-      createdAt: new Date().setDate(new Date().getDate() - 10)
-    }
-  ];
 
-  empty(main).appendChild(template(pictures));
+  empty(main).appendChild(template(ctx.pictures));
 });
+
+function loadPictures(ctx, next) {
+  request
+    .get('/api/pictures')
+    .end(function(err, res) {
+      if(err) return console.log(err);
+      // CTX nos permite compartir datos a través de los midwares
+      // en este caso nos permite compartir las fotos
+      // a la siguiente funcion que va ejecutar page
+      ctx.pictures = res.body;
+      // Next llamará a la siguiente funcion
+      // midware y nos aseguramos que se llame despues de
+      // toda esta ejecucion, llamando al metodo next desde dentro
+      // de esta funcion
+      next();
+    })
+};
+
+function loadPicturesAxios(ctx, next) {
+  axios
+    .get('/api/pictures')
+    .then(function(res) {
+      //Axios no tiene un body, tiene un data
+      ctx.pictures = res.data;
+      next();
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+};
+
+function loadPicturesFetch(ctx, next) {
+  fetch('/api/pictures')
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(pictures) {
+      ctx.pictures = pictures;
+      next();
+    })
+    .catch((err) => {
+      console.log(`Error: ${err}`);
+    })
+}
+
+async function asyncLoad(ctx, next) {
+  try {
+    ctx.pictures = await fetch('./api/pictures').then((res) => res.json())
+    next();
+  } catch(err) {
+    return console.log(`Error: ${err}`);
+  }
+}

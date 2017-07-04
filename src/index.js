@@ -2,6 +2,7 @@
 // este es el encargado de juntar todas las dependencias de desarrollo
 // y otorgarlas a la interfaz que las necesite
 var page = require('page');
+require("babel-polyfill");
 require('./homepage');
 require('./signup');
 require('./signin');
