@@ -13,9 +13,9 @@ page('/', function(ctx, next) {
         avatar: 'https://scontent.fmex3-1.fna.fbcdn.net/v/t1.0-9/17155671_1288914331173722_1801883158916523163_n.jpg?oh=1b6d9594b1dc93ac65e33603f1b48587&oe=59DB0BE3'
       },
       url: 'office.jpg',
-      likes: 14,
-      liked: true,
-      createdAt: new Date()
+      likes: 0,
+      liked: false,
+      createdAt: new Date().getTime()
     },
     {
       user: {
@@ -23,7 +23,7 @@ page('/', function(ctx, next) {
         avatar: 'https://scontent.fmex3-1.fna.fbcdn.net/v/t1.0-9/17155671_1288914331173722_1801883158916523163_n.jpg?oh=1b6d9594b1dc93ac65e33603f1b48587&oe=59DB0BE3'
       },
       url: 'office.jpg',
-      likes: 2,
+      likes: 1,
       liked: false,
       createdAt: new Date().setDate(new Date().getDate() - 10)
     }

@@ -1,8 +1,9 @@
 var yoyo = require('yo-yo');
-var moment = require('moment');
-require('moment/locale/es');
+var translate = require('../translate');
+// var moment = require('moment');
 // Le indicamos que la locacion de nuestra app es en Español
-moment.locale('es');
+// require('moment/locale/es');
+// moment.locale('es');
 
 module.exports = function pictureCard(pic) {
   var el;
@@ -16,11 +17,11 @@ module.exports = function pictureCard(pic) {
           <img src="${picture.user.avatar}" class="avatar" />
           <span class="username">${picture.user.username}</span>
         </a>
-        <small class="right time">${moment(picture.createdAt).fromNow()}</small>
+        <small class="right time">${translate.date.format(picture.createdAt)}</small>
         <p>
           <a href="#" class="left" onclick=${like.bind(null, true)}><i class="fa fa-heart-o" aria-hidden="true"></i></a>
           <a href="#" class="left" onclick=${like.bind(null, false)}><i class="fa fa-heart" aria-hidden="true"></i></a>
-          <span class="left likes">${picture.likes} Me gusta</span>
+          <span class="left likes">${translate.message('likes', {likes: picture.likes})}</span>
         </p>
       </div>
     </div>`;
