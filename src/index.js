@@ -5,6 +5,10 @@ var page = require('page');
 require('./homepage');
 require('./signup');
 require('./signin');
+require('./footer');
 
 // console.log(page());
 page();
+
+
+// Aqui se importan todas las plantillas del lado del cliente

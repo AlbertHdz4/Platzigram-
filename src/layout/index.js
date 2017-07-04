@@ -1,4 +1,6 @@
 var yoyo = require('yo-yo');
+var translate = require('../translate');
+
 module.exports = function layout(content) {
   return yoyo`
   <div>
@@ -15,7 +17,7 @@ module.exports = function layout(content) {
               </a>
               <ul id="drop-user" class="dropwdown-content">
                 <li>
-                  <a href="#">Salir</a>
+                  <a href="#">${translate.message('logout')}</a>
                 </li>
               </ul>
             </div>

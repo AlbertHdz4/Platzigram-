@@ -25,22 +25,6 @@ html
     title=title
   body
     section#main-container
-    footer.site-footer
-      .container
-        .row
-          // Los prefijos s## nos ayudan a saber primero, s, m o l
-          // si es para dispositivos small medium o large y los numeros,
-          // indican cuantas columnas se tomaran de las 12 que se encuentran
-          // disponibles
-          .col.s12.l3.center-align
-        a.dropdown-button.btn.btn-flat(href='#', data-activates='dropdown1') Idioma
-        ul#dropdown1.dropdown-content
-          li
-            a(href='#!') Español
-          li
-            a(href='#!') Inglés
-      .col.s12.l3.push-l6.center-align
-        | &copy 2017 Platzigram
     script(src='https://code.jquery.com/jquery-2.2.4.min.js', integrity='sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=', crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js')
     script(type="application/javascript" src="app.js")
