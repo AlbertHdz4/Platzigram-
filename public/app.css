@@ -7001,29 +7001,44 @@ body {
 
 .container-photos {
   position: relative;
-  height: 100px;
-  border-radius: 50%;
-  margin: 10px; }
+  width: 33%;
+  height: 45%; }
 
 .frame-picture {
   width: 90%;
   height: 100%; }
 
 .pic-container {
-  margin-top: 20px; }
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
 
-.hide-info {
+.hide-frame {
   position: absolute;
   background-color: rgba(255, 255, 255, 0);
   transform: scale(0);
   color: #125688;
   text-align: center;
-  line-height: 100px;
-  transition: 0.5s; }
+  transition: 0.5s;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  line-height: 300px;
+  font-size: 1.82em; }
 
-div.col.s3.m3.container-photos:hover > div {
-  background-color: rgba(255, 255, 255, 0.7);
+div.container-photos:hover > div.hide-frame {
+  background-color: rgba(255, 255, 255, 0.6);
   transform: scale(1); }
+
+.pic-users {
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+  margin-top: 3%;
+  animation: appear 0.5s; }
 
 @keyframes appear {
   0% {
