@@ -38,10 +38,10 @@ const compile = (watch) => {
   //En esta linea lo que se hace es crear una variable que
   // recibe lo que nos devuelve watchify que a su vez recibe como
   // parametro lo que regresa browserify (bundler)
-  var bundle = browserify('./src/index.js', {debug: true});
+  var bundle = browserify('./src/index.js'/*, {debug: true}*/);
   //Se crea una funcion que haga todo el build de los JavaScript
   function rebundle() {
-    if(watch) {  
+    if(watch) {
       //lo que regresa watchify es un objeto que nos va a permitir
       // escuchar cada vez que pase un cambio en los archivos
       bundle = watchify(bundle);
@@ -62,7 +62,7 @@ const compile = (watch) => {
     //Hemos borrado la tarea anterior y la sustituimos con
     // esta funcion y utilizando una nueva variable llamada bundle
     bundle
-      .transform(babelify, {presets: ['es2015'], plugins: [ 'syntax-async-functions', 'transform-regenerator']})
+      .transform(babelify, {presets: ['es2015'], plugins: [ 'syntax-async-functions', 'transform-regenerator' ]})
       .bundle()
       .on('error', function(error) {
         console.log('Se ha originado un error', error);

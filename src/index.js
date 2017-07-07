@@ -6,8 +6,8 @@ require("babel-polyfill");
 require('./homepage');
 require('./signup');
 require('./signin');
-require('./users');
 require('./footer');
+require('./users');
 
 // console.log(page());
 page();

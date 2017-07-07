@@ -1,1 +1,0 @@
-var templateUsers = require('./template');

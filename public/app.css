@@ -6922,9 +6922,29 @@ body {
   float: left;
   margin-right: 12px; }
 
+.avatar-users {
+  width: 100px;
+  height: 100px;
+  border-radius: 90%;
+  float: left;
+  margin: 5px;
+  animation: appear 0.7s; }
+
 .card .username {
   color: #125688;
   line-height: 48px; }
+
+.header-username {
+  text-decoration: none;
+  color: #125688;
+  font-size: 1.8em;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+  line-height: 100px;
+  margin-left: 5px;
+  animation: appear 0.7s; }
 
 .card small.time {
   line-height: 48px; }
@@ -6972,3 +6992,42 @@ body {
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0); }
+
+.paragraphs {
+  text-align: justify;
+  color: black;
+  width: 100%;
+  animation: appear 0.7s; }
+
+.container-photos {
+  position: relative;
+  height: 100px;
+  border-radius: 50%;
+  margin: 10px; }
+
+.frame-picture {
+  width: 90%;
+  height: 100%; }
+
+.pic-container {
+  margin-top: 20px; }
+
+.hide-info {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  transform: scale(0);
+  color: #125688;
+  text-align: center;
+  line-height: 100px;
+  transition: 0.5s; }
+
+div.col.s3.m3.container-photos:hover > div {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1); }
+
+@keyframes appear {
+  0% {
+    color: white;
+    transform: scale(0.1); }
+  95% {
+    transform: scale(1.1); } }

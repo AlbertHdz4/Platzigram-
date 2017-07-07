@@ -30,6 +30,15 @@ function loadPictures(ctx, next) {
     })
 };
 
+async function asyncLoad(ctx, next) {
+  try {
+    ctx.pictures = await fetch('./api/pictures').then((res) => res.json())
+    next();
+  } catch(err) {
+    return console.log(`Error: ${err}`);
+  }
+}
+
 function loadPicturesAxios(ctx, next) {
   axios
     .get('/api/pictures')
@@ -55,13 +64,4 @@ function loadPicturesFetch(ctx, next) {
     .catch((err) => {
       console.log(`Error: ${err}`);
     })
-}
-
-async function asyncLoad(ctx, next) {
-  try {
-    ctx.pictures = await fetch('./api/pictures').then((res) => res.json())
-    next();
-  } catch(err) {
-    return console.log(`Error: ${err}`);
-  }
 }
